@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import Header from './components/Header.jsx'
+import UsageSection from './components/UsageSection.jsx'
 import Carousel from './components/Carousel.jsx'
 
 function App() {
@@ -62,8 +63,12 @@ function App() {
             </Link>
           </motion.div>
         </div>
+      </main>
+      </div>
 
-        {/* Carousel Section */}
+
+      {/* Carousel Section */}
+      <div className="px-5 sm:px-8">
         <motion.section
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -71,8 +76,9 @@ function App() {
         >
           <Carousel />
         </motion.section>
-      </main>
       </div>
+      {/* Usage Section */}
+      <UsageSection />
     </div>
   )
 }

@@ -1,5 +1,8 @@
 import { motion, useMotionValue, useTransform, AnimatePresence, useInView } from 'motion/react'
 import { useState, useRef, useEffect } from 'react'
+import video1 from '../assets/Screen Recording 2025-09-30 184404.mp4?url'
+import video2 from '../assets/Screen Recording 2025-09-30 185538.mp4?url'
+import screenshot from '../assets/Screenshot 2025-09-30 185919.png'
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -9,32 +12,25 @@ const Carousel = () => {
   const carouselRef = useRef(null)
   const containerRef = useRef(null)
   
-  // Sample media items (3 images + 1 video)
+  // Media items - Your custom content
   const slides = [
     {
+      type: 'video',
+      src: video1,
+      title: 'Flex Display Demo',
+      description: 'Experience the technology in action'
+    },
+    {
       type: 'image',
-      src: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=80',
-      title: 'Flexible Display',
-      description: 'Transform any surface into a screen'
+      src: screenshot,
+      title: 'Interface Preview',
+      description: 'Clean and intuitive design'
     },
     {
       type: 'video',
-      src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-      poster: 'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=1200&q=80',
-      title: 'In Action',
-      description: 'See the technology come to life'
-    },
-    {
-      type: 'image',
-      src: 'https://images.unsplash.com/photo-1635514569146-9a9607ecf303?w=1200&q=80',
-      title: 'Seamless Integration',
-      description: 'Blends perfectly with your space'
-    },
-    {
-      type: 'image',
-      src: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=1200&q=80',
-      title: 'Crystal Clear',
-      description: 'Vivid colors and sharp details'
+      src: video2,
+      title: 'Advanced Features',
+      description: 'Discover what makes it special'
     }
   ]
   
@@ -180,31 +176,26 @@ const Carousel = () => {
                   />
                 ) : (
                   <video
-                    src={slide.src}
-                    poster={slide.poster}
+                    key={slide.src}
                     className="w-full h-full object-cover"
                     controls
                     loop
                     muted
                     playsInline
-                  />
+                    autoPlay
+                  >
+                    <source src={slide.src} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 )}
 
-                {/* Glassmorphism Overlay */}
+                {/* Text Overlay */}
                 <motion.div
-                  className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 backdrop-blur-xl bg-white/10 border-t border-white/20 rounded-b-3xl"
+                  className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 bg-gradient-to-t from-black/80 via-black/60 to-transparent rounded-b-3xl"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  animate={{
-                    backgroundColor: showLaptopFrame ? 'rgba(255, 255, 255, 0.12)' : 'rgba(255, 255, 255, 0.1)',
-                    backdropFilter: showLaptopFrame ? 'blur(24px)' : 'blur(16px)'
-                  }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  whileHover={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                    transition: { duration: 0.3 }
-                  }}
                 >
                   <motion.h3
                     className="text-xl sm:text-2xl font-bold text-white mb-2"
@@ -216,7 +207,7 @@ const Carousel = () => {
                     {slide.title}
                   </motion.h3>
                   <motion.p
-                    className="text-sm sm:text-base text-white/80"
+                    className="text-sm sm:text-base text-white/90"
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
