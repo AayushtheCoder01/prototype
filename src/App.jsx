@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import Header from './components/Header.jsx'
+import TypewriterText from './components/TypewriterText.jsx'
 import UsageSection from './components/UsageSection.jsx'
 import Carousel from './components/Carousel.jsx'
 
@@ -19,12 +20,21 @@ function App() {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <motion.span 
-              className="block bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-fuchsia-500 to-red-500"
+              className="block"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             >
-              Flex Display Technology
+              <TypewriterText 
+                text="Flex" 
+                delay={0.6} 
+                speed={0.15}
+                showBar={true}
+                className="inline-block"
+              />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-fuchsia-500 to-red-500">
+                {" Display Technology"}
+              </span>
             </motion.span>
             <motion.span 
               className="mt-3 block text-white"

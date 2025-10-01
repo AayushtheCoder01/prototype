@@ -39,17 +39,6 @@ const Carousel = () => {
   
   // Determine if laptop frame should be shown
   const showLaptopFrame = isInView || isHovered
-  
-  // Auto-play when in view
-  useEffect(() => {
-    if (isInView && !isHovered) {
-      const interval = setInterval(() => {
-        setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1))
-      }, 3000)
-      
-      return () => clearInterval(interval)
-    }
-  }, [isInView, isHovered, slides.length])
 
   const handlePrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1))
