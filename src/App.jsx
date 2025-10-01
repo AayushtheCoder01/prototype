@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import Header from './components/Header.jsx'
 import TypewriterText from './components/TypewriterText.jsx'
+import FeatureHighlights from './components/FeatureHighlights.jsx'
 import UsageSection from './components/UsageSection.jsx'
 import Carousel from './components/Carousel.jsx'
 
@@ -77,6 +78,12 @@ function App() {
       </div>
 
 
+      {/* Feature Highlights Section */}
+      <FeatureHighlights />
+
+      {/* Usage Section */}
+      <UsageSection />
+
       {/* Carousel Section */}
       <div className="px-5 sm:px-8">
         <motion.section
@@ -87,10 +94,7 @@ function App() {
           <Carousel />
         </motion.section>
       </div>
-      {/* Usage Section */}
-      <UsageSection />
     </div>
   )
 }
-
 export default App
